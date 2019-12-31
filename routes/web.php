@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+//    app('log')->info('Welcome Bro');
     return view('welcome');
 });
 
