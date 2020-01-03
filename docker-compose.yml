@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    env_file:
+      - .docker.env
     volumes:
       - .:/var/www/html
     ports:
@@ -26,7 +28,6 @@ services:
     container_name: laravel-redis
     image: redis:4-alpine
     ports:
-#      - 6379:6379
       - 16379:6379
     volumes:
       - redis:/data
