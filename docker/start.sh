@@ -11,6 +11,12 @@ role=${CONTAINER_ROLE:-app}
 echo "The role is $role"
 
 if [ "$env" != "local" ]; then
+    (
+        cd /var/www/html &&
+        php artisan config:cache &&
+        php artisan route:cache &&
+        php artisan view:cache
+    )
   echo "Removing XDebug"
   rm -rf /usr/local/etc/php/conf.d/{docker-php-ext-xdebug.ini,xdebug.ini}
 fi
@@ -25,7 +31,7 @@ elif [ "$role" = "scheduler" ]; then
     done
 elif [ "$role" = "queue" ]; then
     echo "Running the queue"
-    php /var/www/html/artisan queue:work --verbose --tries=3 --timeout 90
+    exec php /var/www/html/artisan queue:work --verbose --tries=3 --timeout 90
 
 else
     echo "Could not match the container role $role"

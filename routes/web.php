@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-//    app('log')->info('Welcome Bro');
-    return view('welcome');
-});
+//Route::get('/', function () {
+////    app('log')->info('Welcome Bro');
+//    return view('welcome');
+//});
 
-Route::get('/hello', function () {
-    return 'hello';
-});
+Route::view('/', 'welcome');
+
+Route::get('/podcasts', 'PodcastController@index');
