@@ -28,4 +28,7 @@ docker-compose up </br>
 cat /usr/local/etc/php/conf.d/xdebug.ini </br>
 10) To see xdebug.ini </br>
   tail /tmp/xdebug.log </br>
+11) take a look at </br>
+https://www.youtube.com/watch?v=4opFac50Vwo&lc=UgzO6tuJmbDjA6UUoHJ4AaABAg.9ZDeShZELEl9a2cVgU-UEW
+
 
