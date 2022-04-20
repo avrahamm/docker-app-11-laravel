@@ -3,6 +3,8 @@ services:
   app:
     image: laravel-www
     container_name: laravel-www
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     build:
       context: .
       dockerfile: docker/Dockerfile
