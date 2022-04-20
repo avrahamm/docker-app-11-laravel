@@ -15,8 +15,36 @@ services:
       - .docker.env
     volumes:
       - .:/var/www/html
+    environment:
+      CONTAINER_ROLE: app
     ports:
       - 8080:80
+  scheduler:
+    image: laravel-www
+    container_name: laravel-scheduler
+    env_file:
+      - .docker.env
+    volumes:
+      - .:/var/www/html
+    environment:
+      CONTAINER_ROLE: scheduler
+    depends_on:
+      - app
+      - mysql
+      - redis
+  queue:
+    image: laravel-www
+    container_name: laravel-queue
+    env_file:
+      - .docker.env
+    volumes:
+      - .:/var/www/html
+    environment:
+      CONTAINER_ROLE: queue
+    depends_on:
+      - app
+      - mysql
+      - redis
   mysql:
     container_name: laravel-mysql
     image: mysql:5.7
