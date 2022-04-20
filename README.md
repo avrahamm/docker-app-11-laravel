@@ -20,12 +20,12 @@ docker-compose run app php artisan key:generate </br>
 docker-compose up </br>
 
 5) Open http://localhost:8080 in Firefox - I ran on ubuntu 20. </br>
-6) Get into container bash </br>
+6)  Try to turn on Xdebug firefox extension </br>
+7)  Turn on PHPStorm "Listen to PHP debug connetions"/green phone and "break on first line", or add breakpoints.
+8) Get into container bash </br>
    docker-compose exec app bash </br>
-
-7) To see log </br>
+9) To see log </br>
 cat /usr/local/etc/php/conf.d/xdebug.ini </br>
-
-8) To see xdebug.ini </br>
+10) To see xdebug.ini </br>
   tail /tmp/xdebug.log </br>
 
