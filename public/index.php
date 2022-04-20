@@ -6,7 +6,11 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
+//phpinfo();
+$a = 1;
+$b = 2;
+xdebug_info();
+exit;
 define('LARAVEL_START', microtime(true));
 
 /*
