@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+    depends_on:
+      - mysql
+      - redis
     env_file:
       - .docker.env
     volumes:
@@ -31,9 +34,21 @@ services:
       - 16379:6379
     volumes:
       - redis:/data
-
+  composer:
+    build:
+      context: .
+      dockerfile: docker/composer.dockerfile
+    volumes:
+      - .:/var/www/html
+#  git:
+#    container_name: git
+#    image: bitnami/git:latest
+#    volumes:
+#      - .:/var/www/html
 volumes:
   mysql:
     driver: "local"
   redis:
+    driver: "local"
+  composer:
     driver: "local"

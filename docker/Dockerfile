@@ -11,6 +11,7 @@ COPY docker/config/php/conf.d/*.ini /usr/local/etc/php/conf.d/
 COPY docker/start.sh /usr/local/bin/start
 
 RUN chown -R www-data:www-data /var/www/html \
+    && chmod 777 -R /var/www/html \
     && chmod +x /usr/local/bin/start
 
 CMD ["/usr/local/bin/start"]
