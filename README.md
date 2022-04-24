@@ -9,6 +9,10 @@ git clone https://github.com/avrahamm/docker-app-11-laravel.git xdebug </br>
 cd xdebug </br>
 
 2)  Add .env from .env.example and .docker.env from docker.env.example files from respective example files</br>
+    Windows! </br>
+    Open docker/start.sh and assure line endings LF (linux style) and not CLRF(wibdows style), </br>
+    as docker container runs linux. </br>
+    @link: https://stackoverflow.com/questions/70380310/docker-env-bash-r-no-such-file-or-directory </br>
 
 3) Build and run utility temporary container to composer install </br>
 docker-compose build composer </br>

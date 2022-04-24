@@ -5,6 +5,8 @@ services:
     container_name: laravel-www
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    networks:
+      - laravel.local
     build:
       context: .
       dockerfile: docker/Dockerfile
@@ -22,6 +24,8 @@ services:
   scheduler:
     image: laravel-www
     container_name: laravel-scheduler
+    networks:
+      - laravel.local
     env_file:
       - .docker.env
     volumes:
@@ -35,6 +39,8 @@ services:
   queue:
     image: laravel-www
     container_name: laravel-queue
+    networks:
+      - laravel.local
     env_file:
       - .docker.env
     volumes:
@@ -48,6 +54,8 @@ services:
   mysql:
     container_name: laravel-mysql
     image: mysql:5.7
+    networks:
+      - laravel.local
     volumes:
       - mysql:/var/lib/mysql
     environment:
@@ -60,6 +68,8 @@ services:
   redis:
     container_name: laravel-redis
     image: redis:4-alpine
+    networks:
+      - laravel.local
     ports:
       - 16379:6379
     volumes:
@@ -68,6 +78,8 @@ services:
     build:
       context: .
       dockerfile: docker/composer.dockerfile
+    networks:
+      - laravel.local
     volumes:
       - .:/var/www/html
 #  git:
@@ -82,3 +94,8 @@ volumes:
     driver: "local"
   composer:
     driver: "local"
+
+#  On ubuntu try networks
+#  @link:https://superuser.com/questions/1668461/xubuntu-20-4-xdebug-3-and-docker-impossible-to-connect-from-container-to-host </br>
+networks:
+  laravel.local:
